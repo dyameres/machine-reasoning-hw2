@@ -12,7 +12,8 @@ class Node():
 
 class Tree():
     def __init__(self,):
-
+        #comment
+        
     
-    def evaluate(x):
+    def evaluate(x): # recursive
         return x
