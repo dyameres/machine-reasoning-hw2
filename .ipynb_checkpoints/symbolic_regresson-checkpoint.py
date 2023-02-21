@@ -43,10 +43,7 @@ class Tree():
         # determine fitness of current tree
         # maybe mean square error
         return self
-    
-    def evaluate(self, x): # recursive
-        return x
-    
+
     def crossover(self, otherTree):
         # function for crossover
         return self
