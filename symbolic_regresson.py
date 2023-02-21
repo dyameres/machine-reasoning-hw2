@@ -5,34 +5,35 @@
 from random import randrange
 
 class Node():
-    def __init__(self, parent, value, left=None, right=None): #left and right are children
+    def __init__(self, value, left=None, right=None): #left and right are children
         self.left = left
         self.right = right
         self.value = value
-    
-    def insert(self, value):
-      if self.value:
-         if value < self.value:
-            if self.left is None:
-               self.left = Node(value)
-            else:
-               self.left.insert(value)
-         elif value > self.value:
-            if self.right is None:
-               self.right = Node(value)
-            else:
-               self.right.insert(value)
-         else:
-            self.value = value
 
 
 class Tree():
-    def __init__(self, root):
-        # comment
-        # define self.root = root
-        # if statements for operators 
-        # else must be integers 
-        self.root = root
+    
+    def createNode(self, data):
+        """
+        Utility function to create a node.
+        """
+        return Node(data)
+
+    def insert(self, node, data):
+        """
+        Insert function will insert a node into tree.
+        Duplicate keys are not allowed.
+        """
+        #if tree is empty , return a root node
+        if node is None:
+            return self.createNode(data)
+        # if data is smaller than parent , insert it into left side
+        if data < node.data:
+            node.left = self.insert(node.left, data)
+        elif data > node.data:
+            node.right = self.insert(node.right, data)
+
+        return node
         
     def getRoot(self):
         # return self.root
@@ -55,9 +56,24 @@ class Tree():
         return self
 
 
+def buildTree(array):
+    # array = [2, 0, 2, 0, 0, 0, 2, 2, 2, 2, 2]
+    tree1 = Node()
+    rand_operator_num = randrange(1, 5)
+    
+    if rand_operator_num == 1:
+        tree1.data = "+"
+    elif rand_operator_num == 2:
+        tree1.data = "-"
+    elif rand_operator_num == 3:
+        tree1.data = "*"
+    elif rand_operator_num == 4:
+        tree1.data = "/"
+
+
 def main():
-    rand_children = []
-    for i in range(10):
+    rand_children = [2]
+    for i in range(9):
         rand_children.append(randrange(0, 3, 2))
    
     print(rand_children)
