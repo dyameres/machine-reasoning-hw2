@@ -23,6 +23,9 @@ class Node():
         else:
             self.value = value
 
+    # prints the value of the current node if Node object is printed
+    def __str__(self):
+        return self.value
 
 class Tree():
 
