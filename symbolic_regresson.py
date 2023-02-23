@@ -10,20 +10,14 @@ class Node():
         self.right = right
         self.value = value
 
-    def insert(self, value):
-        if self.value:
-            if self.left is None:
-                self.left = Node(value)
-            elif self.right is None:
-                self.right = Node(value)
-        else:
-            self.value = value
-
     # prints the value of the current node if Node object is printed
     def __str__(self):
         return self.value
 
 class Tree():
+    def __init__(self):
+        self.root = None
+        self.buildTree()
 
     def createNode(self, value):
         """
@@ -48,11 +42,14 @@ class Tree():
         # function for mutation
         return self
 
+    def buildTree(self):
+        # array = [2, 0, 2, 0, 0, 0, 2, 2, 2, 2, 2]
+        #Recursive solution, flip a coin between choices
+        #base case: when the node is an integer or x
 
-def buildTree(tree):
-    # array = [2, 0, 2, 0, 0, 0, 2, 2, 2, 2, 2]
-    choices = ["+", "-", "*", "/", 1, 2]
-    random_node = random.choice(choices)
+        choices = ["+", "-", "*", "/", 1, 2]
+        self.root = random.choice(choices)
+
 
 def printTree(root, level=0):
         children = []
@@ -73,9 +70,9 @@ def main():
         rand_children.append(random.randrange(0, 3, 2))
     
     tree1 = Node(random.choice(choices))
-    tree1.insert(10)
-    tree1.insert(20)
-    tree1.insert(30)
+    tree1.insertLeft(random.choice(choices))
+    tree1.insertRight(20)
+    #tree1.insert(30)
     #buildTree(tree1)
 
     printTree(tree1)
