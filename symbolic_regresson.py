@@ -3,66 +3,42 @@
 # By Dylan Ameres and Tristan Allen
 
 import random
-
-class Node():
-    def __init__(self, value, left=None, right=None): #left and right are children
-        self.left = left
-        self.right = right
-        self.value = value
-
-    def insert(self, value):
-        if self.value:
-            if self.left is None:
-                self.left = Node(value)
-            elif self.right is None:
-                self.right = Node(value)
-        else:
-            self.value = value
-
-    # prints the value of the current node if Node object is printed
-    def __str__(self):
-        return self.value
+from Node import Node
+from evaluate import evaluate
+from treeBuilder import buildTree
 
 class Tree():
-
+    
+    def __init__(self, maxDepth):
+        self.root = Node(random.choice(['+', '-', '/', '*']))
+        buildTree(self, maxDepth)
+        
     def createNode(self, value):
         """
         Utility function to create a node.
         """
         return Node(value)
         
-    def getRoot(self):
-        # return self.root
-        return self
-        
-    def fitness(self,):
+    def fitness(self, x):
         # determine fitness of current tree
         # maybe mean square error
-        return self
+        value = evaluate(self.getRoot, x)
+        return value
 
     def crossover(self, otherTree):
         # function for crossover
-        return self
+        return self.root
         
     def mutate(self,):
         # function for mutation
-        return self
-
-
-def buildTree(tree):
-    # array = [2, 0, 2, 0, 0, 0, 2, 2, 2, 2, 2]
-    choices = ["+", "-", "*", "/", 1, 2]
-    random_node = random.choice(choices)
+        return self.root
 
 def printTree(root, level=0):
         children = []
         if root.left != None and root.right != None:
             children = [root.left, root.right]
-        if root.left != None and root.right == None:
-            children = [root.left]
-        if root.left == None and root.right != None:
-            children = [root.right]
         print("  " * level, root.value)
+        # prints left branch above right branch
         for child in children:
             printTree(child, level + 1)
 
@@ -74,8 +50,6 @@ def main():
     
     tree1 = Node(random.choice(choices))
     tree1.insert(10)
-    tree1.insert(20)
-    tree1.insert(30)
     #buildTree(tree1)
 
     printTree(tree1)

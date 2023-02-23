@@ -1,16 +1,22 @@
-from symbolic_regresson import Node
+from symbolic_regresson import Node, Tree, buildTree, printTree
 from evaluate import evaluate
 
-root = Node('*')
+# root = Node('*')
 
-root.left = Node('+')
-root.right = Node('-')
+# root.left = Node('+')
+# root.right = Node('-')
 
-root.left.left = Node(4)
-root.left.right = Node('x')
+# root.left.left = Node(4)
+# root.left.right = Node('x')
 
-root.right.left = Node('x')
-root.right.right = Node(2)
+# root.right.left = Node('x')
+# root.right.right = Node(2)
 
 
-print(evaluate(root, 1))
+# print(evaluate(root, 1))
+
+first = Tree(2)
+printTree(first.root)
+
+print('evaluated')
+print(evaluate(first.root, 2))
