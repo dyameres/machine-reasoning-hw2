@@ -14,12 +14,8 @@ class Node():
         if self.value:
             if self.left is None:
                 self.left = Node(value)
-            else:
-                self.left.insert(value)
-            if self.right is None:
+            elif self.right is None:
                 self.right = Node(value)
-            else:
-                self.right.insert(value)
         else:
             self.value = value
 
@@ -62,6 +58,10 @@ def printTree(root, level=0):
         children = []
         if root.left != None and root.right != None:
             children = [root.left, root.right]
+        if root.left != None and root.right == None:
+            children = [root.left]
+        if root.left == None and root.right != None:
+            children = [root.right]
         print("  " * level, root.value)
         for child in children:
             printTree(child, level + 1)
@@ -74,6 +74,8 @@ def main():
     
     tree1 = Node(random.choice(choices))
     tree1.insert(10)
+    tree1.insert(20)
+    tree1.insert(30)
     #buildTree(tree1)
 
     printTree(tree1)
