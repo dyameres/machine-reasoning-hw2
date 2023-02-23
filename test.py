@@ -1,5 +1,4 @@
-from symbolic_regresson import Node, Tree, buildTree, printTree
-from evaluate import evaluate
+from symbolic_regresson import Node, Tree, printTree
 
 # root = Node('*')
 
@@ -18,8 +17,5 @@ from evaluate import evaluate
 first = Tree(2)
 printTree(first.root)
 
-
-print('evaluated outside class')
-print(evaluate(first.root, 2))
 print('evaluated within class')
 print(first.evaluate(first.root, 2))

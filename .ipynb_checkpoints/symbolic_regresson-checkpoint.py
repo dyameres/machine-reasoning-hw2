@@ -4,21 +4,30 @@
 
 import random
 from Node import Node
-from evaluate import evaluate
-from treeBuilder import buildTree
 
 class Tree():
     
     def __init__(self, maxDepth):
         self.root = Node(random.choice(['+', '-', '/', '*']))
+        self.buildTree(self.root, 1, maxDepth) # constructs the tree
         self.depth = maxDepth
-        buildTree(self, maxDepth)
         
-    def createNode(self, value):
-        """
-        Utility function to create a node.
-        """
-        return Node(value)
+    # Initializes the tree building process by calling the recursive helper 
+    # parameters: 
+    #     curNode - the current node to create children for
+    #     curDepth - what layer the current node is at 
+    #     maxDepth - how many layers to build the tree out
+    def buildTree(self, curNode, curDepth, maxDepth):
+        ops = ['+', '-', '*', '/']
+        if curDepth < maxDepth:
+            curNode.left = Node(random.choice(ops))
+            self.buildTree(curNode.left, curDepth+1, maxDepth)
+            curNode.right = Node(random.choice(ops))
+            self.buildTree(curNode.right, curDepth+1, maxDepth)
+        else:
+            # using 2:1 for integers to x's to avoid too many x's but could change in future
+            curNode.left = Node(random.choice([random.randrange(-2, 3), random.randrange(-2, 3), 'x']))
+            curNode.right = Node(random.choice([random.randrange(-2, 3), random.randrange(-2, 3), 'x']))
         
     def fitness(self, x):
         # determine fitness of current tree
@@ -35,15 +44,15 @@ class Tree():
     #          the current 'x' value 
     def evaluate(self, curNode, x):
         if curNode.value == '+':
-            return evaluate(curNode.left, x) + evaluate(curNode.right, x)
+            return self.evaluate(curNode.left, x) + self.evaluate(curNode.right, x)
         elif curNode.value == '-':
-            return evaluate(curNode.left, x) - evaluate(curNode.right, x)
+            return self.evaluate(curNode.left, x) - self.evaluate(curNode.right, x)
         elif curNode.value == '*':
-            return evaluate(curNode.left, x) * evaluate(curNode.right, x)
+            return self.evaluate(curNode.left, x) * self.evaluate(curNode.right, x)
         elif curNode.value == '/':
-            right = evaluate(curNode.right, x)
+            right = self.evaluate(curNode.right, x)
             if right != 0:
-                return evaluate(curNode.left, x) / right
+                return self.evaluate(curNode.left, x) / right
             else:
                 return 1
         elif curNode.value == 'x':
