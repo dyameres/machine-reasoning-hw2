@@ -18,5 +18,8 @@ from evaluate import evaluate
 first = Tree(2)
 printTree(first.root)
 
-print('evaluated')
+
+print('evaluated outside class')
 print(evaluate(first.root, 2))
+print('evaluated within class')
+print(first.evaluate(first.root, 2))
