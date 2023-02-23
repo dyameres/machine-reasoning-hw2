@@ -14,8 +14,9 @@ def buildHelper(curNode, curDepth, maxDepth):
         curNode.right = Node(random.choice(ops))
         buildHelper(curNode.right, curDepth+1, maxDepth)
     else:
-        curNode.left = Node(random.randrange(-2, 3))
-        curNode.right = Node(random.randrange(-2, 3))
+        # using 2:1 for integers to x's to avoid too many x's but could change in future
+        curNode.left = Node(random.choice([random.randrange(-2, 3), random.randrange(-2, 3), 'x']))
+        curNode.right = Node(random.choice([random.randrange(-2, 3), random.randrange(-2, 3), 'x']))
     
 # Initializes the tree building process by calling the recursive helper
 # parameters:
