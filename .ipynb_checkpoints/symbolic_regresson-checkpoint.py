@@ -9,14 +9,14 @@ class Tree():
     
     def __init__(self, maxDepth):
         self.root = Node(random.choice(['+', '-', '/', '*']))
-        self.buildTree(self.root, 1, maxDepth) # constructs the tree
+        self.buildTree(self.root, 1, maxDepth=2) # constructs the tree
         self.depth = maxDepth
         
-    # Initializes the tree building process by calling the recursive helper 
+    # Recursively builds teh tree to the specified max depth
     # parameters: 
-    #     curNode - the current node to create children for
-    #     curDepth - what layer the current node is at 
-    #     maxDepth - how many layers to build the tree out
+    #     curNode - Node object of the current node to create children for
+    #     curDepth - int of what layer the current node is at 
+    #     maxDepth - int of how many layers to build the tree out
     def buildTree(self, curNode, curDepth, maxDepth):
         ops = ['+', '-', '*', '/']
         if curDepth < maxDepth:
@@ -28,18 +28,23 @@ class Tree():
             # using 2:1 for integers to x's to avoid too many x's but could change in future
             curNode.left = Node(random.choice([random.randrange(-2, 3), random.randrange(-2, 3), 'x']))
             curNode.right = Node(random.choice([random.randrange(-2, 3), random.randrange(-2, 3), 'x']))
-        
-    def fitness(self, x):
-        # determine fitness of current tree
-        # maybe mean square error
-        value = evaluate(self.getRoot, x)
-        return value
+    
+    # Finds the fitness of the current tree with a given data set 
+    # using the mean squared error to determine fitness 
+    # parameters: 
+    #     dataSet - list of pairs of floats/int representing [[x1, f(x1)], [x2, f(x2)], ...]
+    # returns: returns the mean square error of the data set and current tree 
+    def fitness(self, dataSet):
+        MSE = 0
+        for i in range(len(dataSet)):
+            MSE += (self.evaluate(self.root, dataSet[i][0]) - dataSet[i][1])**2
+        return MSE
     
     # Evaluates a symbolic regression tree recursively through tree 
     # traversal using Node objects and their children
     # parameters:
     #     curNode - a Node object to evaluate the current value
-    #     x - the current 'x' to evaluate the function at
+    #     x - int/float which is the current 'x' to evaluate the function at
     # returns: returns the value after evaluating the tree at 
     #          the current 'x' value 
     def evaluate(self, curNode, x):
