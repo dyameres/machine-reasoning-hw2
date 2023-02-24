@@ -7,9 +7,9 @@ from Node import Node
 
 class Tree():
     
-    def __init__(self, maxDepth):
+    def __init__(self, maxDepth=2): # defaults to tree of depth 2 if no parameter given
         self.root = Node(random.choice(['+', '-', '/', '*']))
-        self.buildTree(self.root, 1, maxDepth=2) # constructs the tree
+        self.buildTree(self.root, 1, maxDepth) # constructs the tree
         self.depth = maxDepth
         
     # Recursively builds teh tree to the specified max depth
@@ -35,9 +35,9 @@ class Tree():
     #     dataSet - list of pairs of floats/int representing [[x1, f(x1)], [x2, f(x2)], ...]
     # returns: returns the mean square error of the data set and current tree 
     def fitness(self, dataSet):
-        MSE = 0
+        MSE = 0 
         for i in range(len(dataSet)):
-            MSE += (self.evaluate(self.root, dataSet[i][0]) - dataSet[i][1])**2
+            MSE += (self.evaluate(self.root, dataSet[i][0]) - dataSet[i][1])**2 # calculate mse for each data point
         return MSE
     
     # Evaluates a symbolic regression tree recursively through tree 
