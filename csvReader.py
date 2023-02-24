@@ -9,6 +9,7 @@ from random import shuffle
 # parameters:
 #     dataSet - string of the path to the dataset to read
 # returns: returns two lists, a train data set and a test data set
+# TODO: add functionality for multivariable functions (dataset2.csv)
 def formatData(dataSet):
     with open(dataSet) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
