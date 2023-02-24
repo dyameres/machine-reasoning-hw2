@@ -73,14 +73,19 @@ class Tree():
         # function for mutation
         return self.root
 
-def printTree(root, level=0):
+    # TODO (not critical): make this return the tree instead of print
+    def printTree(self, root, level=0):
         children = []
         if root.left != None and root.right != None:
             children = [root.left, root.right]
         print("  " * level, root.value)
         # prints left branch above right branch
         for child in children:
-            printTree(child, level + 1)
+            self.printTree(child, level + 1)
+            
+    def __str__(self):
+        self.printTree(self.root)
+        return 'current tree'
 
 def main():
     choices = ["+", "-", "*", "/", 1, 2]

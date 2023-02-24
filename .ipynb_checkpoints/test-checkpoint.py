@@ -1,9 +1,9 @@
-from Tree import Tree, printTree
+from Tree import Tree
 from csvReader import formatData
 
 #### TODO: test fitness
 tree = Tree()
-printTree(tree.root)
+print(tree)
 
 dataSet = 'hw2 datasets/dataset1.csv'
 train, test = formatData(dataSet)
