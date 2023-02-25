@@ -1,16 +1,14 @@
 from Tree import Tree
-from csvReader import formatData
+from evolve import xoverFinder, xoverInsert, crossover
+from random import randrange
 
-#### TODO: test fitness
-tree = Tree()
-print(tree)
+#### TODO: test crossover
+tree1 = Tree(3)
+print(tree1)
 
-dataSet = 'hw2 datasets/dataset1.csv'
-train, test = formatData(dataSet)
+tree2 = Tree(3)
+print(tree2) 
 
-print(len(train))
-print(len(test))
 
-print(tree.fitness(train))
-print(tree.fitness(train) / 4)
-print(tree.fitness(test))
+print(crossover(tree1, tree2))
+print(tree2.evaluate(tree2.root, 2))

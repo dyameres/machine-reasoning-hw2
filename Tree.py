@@ -64,10 +64,6 @@ class Tree():
             return x
         else: 
             return curNode.value
-
-    def crossover(self, otherTree):
-        # function for crossover
-        return self.root
         
     def mutate(self,):
         # function for mutation

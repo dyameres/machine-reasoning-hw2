@@ -17,4 +17,4 @@ class Node():
 
     # prints the value of the current node if Node object is printed
     def __str__(self):
-        return self.value
+        return str(self.value)
