@@ -64,10 +64,6 @@ class Tree():
             return x
         else: 
             return curNode.value
-        
-    def mutate(self,):
-        # function for mutation
-        return self.root
 
     # TODO (not critical): make this return the tree instead of print
     def printTree(self, root, level=0):

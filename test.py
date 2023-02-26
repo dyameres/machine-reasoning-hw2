@@ -1,14 +1,11 @@
 from Tree import Tree
-from evolve import xoverFinder, xoverInsert, crossover
+from evolve import mutate
 from random import randrange
 
-#### TODO: test crossover
-tree1 = Tree(3)
+#### TODO: test mutate
+tree1 = Tree(2)
 print(tree1)
 
-tree2 = Tree(3)
-print(tree2) 
+mutate(tree1.root, 0, randrange(tree1.depth + 1))
+print(tree1)
 
-
-print(crossover(tree1, tree2))
-print(tree2.evaluate(tree2.root, 2))

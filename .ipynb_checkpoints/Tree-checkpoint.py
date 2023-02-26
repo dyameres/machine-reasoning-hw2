@@ -65,14 +65,6 @@ class Tree():
         else: 
             return curNode.value
 
-    def crossover(self, otherTree):
-        # function for crossover
-        return self.root
-        
-    def mutate(self,):
-        # function for mutation
-        return self.root
-
     # TODO (not critical): make this return the tree instead of print
     def printTree(self, root, level=0):
         children = []
