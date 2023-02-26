@@ -79,20 +79,5 @@ class Tree():
         self.printTree(self.root)
         return 'current tree'
 
-def main():
-    choices = ["+", "-", "*", "/", 1, 2]
-    rand_children = [2]
-    for i in range(9):
-        rand_children.append(random.randrange(0, 3, 2))
-    
-    tree1 = Node(random.choice(choices))
-    tree1.insert(10)
-    #buildTree(tree1)
-
-    printTree(tree1)
-
-if __name__ == "__main__":
-    main()
-
 # CITATIONS:
 # https://www.researchgate.net/publication/10684490_Using_genetic_programming_to_discover_nonlinear_variable_interactions
