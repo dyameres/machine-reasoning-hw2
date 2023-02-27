@@ -21,6 +21,7 @@ def xoverInsert(curNode, curDepth, goalDepth, newNode):
         else:
             curNode.left = newNode
 
+# done just needs comments
 def xoverFinder(curNode, curDepth, goalDepth):
     try:
         if (randrange(2)):
@@ -35,13 +36,12 @@ def xoverFinder(curNode, curDepth, goalDepth):
         return curNode
 
 # TODO: Look into how to avoid bloating
-# TODO: Need to make new tree not change original tree
 def crossover(treeOne, treeTwo):
     newNode = xoverFinder(treeOne.root, 0, randrange(treeOne.depth))
     xoverInsert(treeTwo.root, 0, randrange(treeTwo.depth), newNode)
     return treeTwo
 
-# TODO: Need to make new tree not change original tree
+# done just needs comments
 def mutate(curNode, curDepth, goalDepth):
     try:
         if (randrange(2)):
@@ -51,14 +51,17 @@ def mutate(curNode, curDepth, goalDepth):
         if (curDepth != goalDepth):
             mutate(temp, curDepth + 1, goalDepth)
         else:
-            # This might choose the same value it already was but I don't think that's a problem
+            temp = curNode.value
             if curNode.value == 'x' or type(curNode.value) == int:
-                curNode.value = choice([randrange(-2, 3), randrange(-2, 3), 'x'])
+                while curNode.value == temp:
+                    curNode.value = choice([randrange(-2, 3), randrange(-2, 3), 'x'])
             else:
-                curNode.value = choice(['+', '-', '*', '/'])
+                while curNode.value == temp:
+                    curNode.value = choice(['+', '-', '*', '/'])
     except AttributeError:
-        # This might choose the same value it already was but I don't think that's a problem
         if curNode.value == 'x' or type(curNode.value) == int:
-            curNode.value = choice([randrange(-2, 3), randrange(-2, 3), 'x'])
+            while curNode.value == temp:
+                curNode.value = choice([randrange(-2, 3), randrange(-2, 3), 'x'])
         else:
-            curNode.value = choice(['+', '-', '*', '/'])
+            while curNode.value == temp:
+                curNode.value = choice(['+', '-', '*', '/'])

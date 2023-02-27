@@ -7,12 +7,16 @@ from Node import Node
 
 class Tree():
     
-    def __init__(self, maxDepth=2): # defaults to tree of depth 2 if no parameter given
-        self.root = Node(random.choice(['+', '-', '/', '*']))
-        self.buildTree(self.root, 1, maxDepth) # constructs the tree
-        self.depth = maxDepth
+    def __init__(self, maxDepth=2, realTree=None): # defaults to tree of depth 2 if no parameter given
+        if realTree == None:
+            self.root = Node(random.choice(['+', '-', '/', '*']))
+            self.buildTree(self.root, 1, maxDepth) # constructs the tree
+            self.depth = maxDepth
+        else:
+            self.root = self.copyTree(realTree.root)
+            self.depth = realTree.depth
         
-    # Recursively builds teh tree to the specified max depth
+    # Recursively builds the tree to the specified max depth
     # parameters: 
     #     curNode - Node object of the current node to create children for
     #     curDepth - int of what layer the current node is at 
@@ -28,12 +32,28 @@ class Tree():
             # using 2:1 for integers to x's to avoid too many x's but could change in future
             curNode.left = Node(random.choice([random.randrange(-2, 3), random.randrange(-2, 3), 'x']))
             curNode.right = Node(random.choice([random.randrange(-2, 3), random.randrange(-2, 3), 'x']))
+            
+    # Recursively creates a copy of the original tree for manipulation
+    # parameters:
+    #     curNode - Node of the current node to copy
+    # returns: Node, returns the copied node
+    def copyTree(self, curNode):
+        copyNode = Node(curNode.value)
+        try:
+            copyNode.left = self.copyTree(curNode.left)
+        except AttributeError:
+            pass
+        try:
+            copyNode.right = self.copyTree(curNode.right)
+        except AttributeError:
+            pass
+        return copyNode
     
     # Finds the fitness of the current tree with a given data set 
     # using the mean squared error to determine fitness 
     # parameters: 
     #     dataSet - list of pairs of floats/int representing [[x1, f(x1)], [x2, f(x2)], ...]
-    # returns: returns the mean square error of the data set and current tree 
+    # returns: float, returns the mean square error of the data set and current tree 
     def fitness(self, dataSet):
         MSE = 0 
         for i in range(len(dataSet)):
@@ -45,7 +65,7 @@ class Tree():
     # parameters:
     #     curNode - a Node object to evaluate the current value
     #     x - int/float which is the current 'x' to evaluate the function at
-    # returns: returns the value after evaluating the tree at 
+    # returns: float, returns the value after evaluating the tree at 
     #          the current 'x' value 
     def evaluate(self, curNode, x):
         if curNode.value == '+':
