@@ -65,3 +65,25 @@ def mutate(curNode, curDepth, goalDepth):
         else:
             while curNode.value == temp:
                 curNode.value = choice(['+', '-', '*', '/'])
+                
+# Implements tournament selection to determine a suitable parent
+# for Genetic Algorithm. 
+# parameters:
+#     curGen - list of Trees, current generation of individuals
+#              to pull a random sample from
+#     tourneySize - int, number of individuals to select for tournament
+#     fitDict - dictionary, keys are individuals in curGen and 
+#               values are the corresponding fitness
+# returns: Tree, returns the best fit individual from the sample
+def tournament(curGen, tourneySize, fitDict):
+    competitor = curGen[randrange(len(curGen))]
+    champion = competitor
+    bestFit = fitDict[competitor]
+    for i in range(1, tourneySize):
+        nextCompetitor = curGen[randrange(len(curGen))]
+        if fitDict[nextCompetitor] < bestFit:
+            champion = nextCompetitor
+            bestFit = fitDict[nextCompetitor]
+    return champion
+        
+    

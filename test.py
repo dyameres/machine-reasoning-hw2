@@ -1,18 +1,12 @@
 from Tree import Tree
-from evolve import mutate, crossover
+from evolve import mutate, crossover, tournament
 from random import randrange
 
-#### TODO: test mutate
-tree1 = Tree(1)
-print(tree1)
+#### TODO: test tournament
 
-tree2 = Tree(realTree=tree1)
-print(tree2)
-mutate(tree2.root, 0, randrange(tree1.depth + 1))
-print(tree2)
-
-tree2.root.value = 0
-
-print(tree2)
-print(tree1)
-
+dicto = {'a':0, 'b':1, 'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7, 'i':8, 'j':9}
+gen = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+size = 5
+print(dicto)
+print(gen)
+print(tournament(gen, size, dicto))

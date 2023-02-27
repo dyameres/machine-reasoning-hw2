@@ -7,14 +7,14 @@ from Node import Node
 
 class Tree():
     
-    def __init__(self, maxDepth=2, realTree=None): # defaults to tree of depth 2 if no parameter given
-        if realTree == None:
+    def __init__(self, maxDepth=2, copyTree=None): # defaults to tree of depth 2 if no parameter given
+        if copyTree == None:
             self.root = Node(random.choice(['+', '-', '/', '*']))
             self.buildTree(self.root, 1, maxDepth) # constructs the tree
             self.depth = maxDepth
         else:
-            self.root = self.copyTree(realTree.root)
-            self.depth = realTree.depth
+            self.root = self.copyTree(copyTree.root)
+            self.depth = copyTree.depth
         
     # Recursively builds the tree to the specified max depth
     # parameters: 
@@ -68,6 +68,7 @@ class Tree():
     # returns: float, returns the value after evaluating the tree at 
     #          the current 'x' value 
     def evaluate(self, curNode, x):
+        # TODO: figure out none type error
         if curNode.value == '+':
             return self.evaluate(curNode.left, x) + self.evaluate(curNode.right, x)
         elif curNode.value == '-':
