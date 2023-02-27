@@ -51,14 +51,18 @@ def mutate(curNode, curDepth, goalDepth):
         if (curDepth != goalDepth):
             mutate(temp, curDepth + 1, goalDepth)
         else:
-            # This might choose the same value it already was but I don't think that's a problem
+            temp = curNode.value
             if curNode.value == 'x' or type(curNode.value) == int:
-                curNode.value = choice([randrange(-2, 3), randrange(-2, 3), 'x'])
+                while curNode.value == temp:
+                    curNode.value = choice([randrange(-2, 3), randrange(-2, 3), 'x'])
             else:
-                curNode.value = choice(['+', '-', '*', '/'])
+                while curNode.value == temp:
+                    curNode.value = choice(['+', '-', '*', '/'])
     except AttributeError:
         # This might choose the same value it already was but I don't think that's a problem
         if curNode.value == 'x' or type(curNode.value) == int:
-            curNode.value = choice([randrange(-2, 3), randrange(-2, 3), 'x'])
+            while curNode.value == temp:
+                curNode.value = choice([randrange(-2, 3), randrange(-2, 3), 'x'])
         else:
-            curNode.value = choice(['+', '-', '*', '/'])
+            while curNode.value == temp:
+                curNode.value = choice(['+', '-', '*', '/'])
