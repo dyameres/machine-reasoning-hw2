@@ -58,7 +58,7 @@ class Tree():
         MSE = 0 
         for i in range(len(dataSet)):
             MSE += (self.evaluate(self.root, dataSet[i][0]) - dataSet[i][1])**2 # calculate mse for each data point
-        return MSE
+        return MSE / len(dataSet)
     
     # Evaluates a symbolic regression tree recursively through tree 
     # traversal using Node objects and their children
@@ -98,7 +98,7 @@ class Tree():
             
     def __str__(self):
         self.printTree(self.root)
-        return 'current tree'
+        return ''
 
 # CITATIONS:
 # https://www.researchgate.net/publication/10684490_Using_genetic_programming_to_discover_nonlinear_variable_interactions

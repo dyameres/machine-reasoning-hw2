@@ -1,7 +1,12 @@
 from Tree import Tree 
 from random import randrange, choice
 
-# TODO: update the depth of the current tree
+# crosses over part of one tree into another. No return. 
+# parameters: 
+#     curNode - Node, current node from tree two to check
+#     curDepth - int, how far down the current tree
+#     goalDepth - int, depth to stop
+#     newNode - Node, node from tree one to crossover
 def xoverInsert(curNode, curDepth, goalDepth, newNode):
     try:
         if (curDepth != goalDepth):
@@ -11,37 +16,55 @@ def xoverInsert(curNode, curDepth, goalDepth, newNode):
                 temp = curNode.left            
             xoverInsert(temp, curDepth + 1, goalDepth, newNode)
         else:
+            if curNode.value == 'x' or type(curNode.value) == int:
+                curNode = newNode
+            else:
+                if (randrange(2)):
+                    curNode.right = newNode
+                else:
+                    curNode.left = newNode  
+    except AttributeError:
+        if curNode.value == 'x' or type(curNode.value) == int:
+            curNode = newNode
+        else:
             if (randrange(2)):
                 curNode.right = newNode
             else:
-                curNode.left = newNode  
-    except AttributeError:
-        if (randrange(2)):
-            curNode.right = newNode
-        else:
-            curNode.left = newNode
+                curNode.left = newNode
 
-# done just needs comments
+# Finds a node from tree one to crossover to tree two
+# parameters:
+#     curNode - Node, current node being checked from tree one
+#     curDepth - int, how far down the current tree
+#     goalDepth - int, depth to stop
+# return: Node, returns a node from tree one to crossover
 def xoverFinder(curNode, curDepth, goalDepth):
     try:
         if (randrange(2)):
             temp = curNode.right
         else:
             temp = curNode.left
-        if (curDepth != goalDepth):
-            return xoverFinder(temp, curDepth + 1, goalDepth)
+        if temp is None:
+            return curNode
         else:
-            return temp
+            if (curDepth != goalDepth):
+                return xoverFinder(temp, curDepth + 1, goalDepth)
+            else:
+                return temp
     except AttributeError:
         return curNode
 
 # TODO: Look into how to avoid bloating
 def crossover(treeOne, treeTwo):
-    newNode = xoverFinder(treeOne.root, 0, randrange(treeOne.depth))
+    newNode = xoverFinder(treeOne.root, 0, randrange(1, treeOne.depth))
     xoverInsert(treeTwo.root, 0, randrange(treeTwo.depth), newNode)
     return treeTwo
 
-# done just needs comments
+# finds a random node from the tree and changes its value
+# parameters:
+#     curNode - Node, current node to check 
+#     curDepth - int, current depth in the tree
+#     goalDepth - int, max depth to go
 def mutate(curNode, curDepth, goalDepth):
     try:
         if (randrange(2)):
