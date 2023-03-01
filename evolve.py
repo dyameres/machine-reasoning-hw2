@@ -7,6 +7,7 @@ from random import randrange, choice
 #     curDepth - int, how far down the current tree
 #     goalDepth - int, depth to stop
 #     newNode - Node, node from tree one to crossover
+# TODO: change for x1, x2, ...
 def xoverInsert(curNode, curDepth, goalDepth, newNode):
     try:
         if (curDepth != goalDepth):
@@ -65,6 +66,7 @@ def crossover(treeOne, treeTwo):
 #     curNode - Node, current node to check 
 #     curDepth - int, current depth in the tree
 #     goalDepth - int, max depth to go
+# TODO: change for x1, x2, ...
 def mutate(curNode, curDepth, goalDepth):
     try:
         if (randrange(2)):

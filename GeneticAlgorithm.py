@@ -7,10 +7,10 @@ from tqdm import tqdm
 # These are Constants that the user can change
 DATASET = 'hw2 datasets/dataset1.csv' # dataset as a string
 POPSIZE = 100 # size of each new population
-INITTREEDEPTH = 4 # depth of first tree generation (root is 0)
-MUTATEPROB = 0.25 # probability of a mutation
-MAXGEN = 200 # number of generations until stopping algorithm (if fit enough individual not found)
-TOURNEYSIZE = 40 # size tree for tournament selection to choose a parent 
+INITTREEDEPTH = 2 # depth of first tree generation (root is 0)
+MUTATEPROB = 0.2 # probability of a mutation
+MAXGEN = 20 # number of generations until stopping algorithm (if fit enough individual not found)
+TOURNEYSIZE = 50 # size tree for tournament selection to choose a parent 
 SURVIVALRATE = 0.5 # percent of population that survives to next generation
 OUTPUTFILE = 'newFile.txt'
 
@@ -80,3 +80,5 @@ while generation < MAXGEN:
     rankFitDict = nextRankDict 
     
 print(MSEList)
+rankFitList.sort()
+print(rankFitDict[rankFitList[0]].fancyPrint(rankFitDict[rankFitList[0]].root))

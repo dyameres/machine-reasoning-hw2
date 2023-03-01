@@ -17,8 +17,11 @@ def formatData(dataSet):
         line_count = 0
         dataRows = []
         for row in csv_reader:
+            curRow = []
             if line_count != 0: # line 0 is the header
-                dataRows.append([float(row[0]), float(row[1])])
+                for i in range(len(row)):
+                    curRow.append(float(row[i]))
+                dataRows.append(curRow)
             else:
                 line_count += 1
     lenData = len(dataRows)

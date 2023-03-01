@@ -1,12 +1,20 @@
 from Tree import Tree
 from evolve import mutate, crossover, tournament
 from random import randrange
+from csvReader import formatData
+import matplotlib.pyplot as plt
 
-#### TODO: test tournament
+#### TODO: graphing data points
 
-dicto = {'a':0, 'b':1, 'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7, 'i':8, 'j':9}
-gen = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-size = 5
-print(dicto)
-print(gen)
-print(tournament(gen, size, dicto))
+DATASET = 'hw2 datasets/dataset1.csv'
+
+trainData, testData = formatData(DATASET)
+
+fullData = trainData + testData
+xData = []
+yData = []
+for i in range(len(fullData)):
+    xData.append(fullData[i][0])
+    yData.append(fullData[i][1])
+    
+plt.plot(xData, yData)
