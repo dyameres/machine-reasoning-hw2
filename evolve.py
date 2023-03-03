@@ -7,7 +7,7 @@ from random import randrange, choice
 #     curDepth - int, how far down the current tree
 #     goalDepth - int, depth to stop
 #     newNode - Node, node from tree one to crossover
-# TODO: change for x1, x2, ...
+# TODO: could update curTree.depth
 def xoverInsert(curNode, curDepth, goalDepth, newNode):
     try:
         if (curDepth != goalDepth):
@@ -17,21 +17,27 @@ def xoverInsert(curNode, curDepth, goalDepth, newNode):
                 temp = curNode.left            
             xoverInsert(temp, curDepth + 1, goalDepth, newNode)
         else:
-            if curNode.value == 'x' or type(curNode.value) == int:
+            try:
+                if curNode.value[0] == 'x':
+                    curNode = newNode
+                else:
+                    if (randrange(2)):
+                        curNode.right = newNode
+                    else:
+                        curNode.left = newNode  
+            except TypeError:
+                curNode = newNode 
+    except AttributeError:
+        try:
+            if curNode.value[0] == 'x':
                 curNode = newNode
             else:
                 if (randrange(2)):
                     curNode.right = newNode
                 else:
                     curNode.left = newNode  
-    except AttributeError:
-        if curNode.value == 'x' or type(curNode.value) == int:
+        except TypeError:
             curNode = newNode
-        else:
-            if (randrange(2)):
-                curNode.right = newNode
-            else:
-                curNode.left = newNode
 
 # Finds a node from tree one to crossover to tree two
 # parameters:
@@ -57,39 +63,49 @@ def xoverFinder(curNode, curDepth, goalDepth):
 
 # TODO: Look into how to avoid bloating
 def crossover(treeOne, treeTwo):
-    newNode = xoverFinder(treeOne.root, 0, randrange(1, treeOne.depth))
-    xoverInsert(treeTwo.root, 0, randrange(treeTwo.depth), newNode)
+    MAXDEPTH = 8
+    newNode = xoverFinder(treeOne.root, 0, randrange(1, MAXDEPTH))
+    xoverInsert(treeTwo.root, 0, randrange(MAXDEPTH), newNode)
     return treeTwo
 
-# finds a random node from the tree and changes its value
+# Recursively finds a random node from the tree and changes
+# its value
 # parameters:
+#     curTree - Tree, current tree being checked
 #     curNode - Node, current node to check 
 #     curDepth - int, current depth in the tree
 #     goalDepth - int, max depth to go
-# TODO: change for x1, x2, ...
-def mutate(curNode, curDepth, goalDepth):
+def mutate(curTree, curNode, curDepth, goalDepth):
     try:
         if (randrange(2)):
             temp = curNode.right
         else:
             temp = curNode.left
         if (curDepth != goalDepth):
-            mutate(temp, curDepth + 1, goalDepth)
+            mutate(curTree, temp, curDepth + 1, goalDepth)
         else:
-            temp = curNode.value
-            if curNode.value == 'x' or type(curNode.value) == int:
+            temp = curNode.value    
+        try:
+            if curNode.value[0] == 'x':
                 while curNode.value == temp:
-                    curNode.value = choice([randrange(-2, 3), randrange(-2, 3), 'x'])
+                    curNode.value = choice([randrange(-2, 3), choice(curTree.xVals)])
             else:
                 while curNode.value == temp:
                     curNode.value = choice(['+', '-', '*', '/'])
+        except TypeError:
+            while curNode.value == temp:
+                curNode.value = choice([randrange(-2, 3), choice(curTree.xVals)])
     except AttributeError:
-        if curNode.value == 'x' or type(curNode.value) == int:
+        try:
+            if curNode.value[0] == 'x':
+                while curNode.value == temp:
+                    curNode.value = choice([randrange(-2, 3), choice(curTree.xVals)])
+            else:
+                while curNode.value == temp:
+                    curNode.value = choice(['+', '-', '*', '/'])
+        except TypeError:
             while curNode.value == temp:
-                curNode.value = choice([randrange(-2, 3), randrange(-2, 3), 'x'])
-        else:
-            while curNode.value == temp:
-                curNode.value = choice(['+', '-', '*', '/'])
+                curNode.value = choice([randrange(-2, 3), choice(curTree.xVals)])
                 
 # Implements tournament selection to determine a suitable parent
 # for Genetic Algorithm. 

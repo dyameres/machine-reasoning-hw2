@@ -7,32 +7,35 @@ from Node import Node
 
 class Tree():
     
-    def __init__(self, maxDepth=2, copyTree=None): # defaults to tree of depth 2 if no parameter given
+    def __init__(self, maxDepth=2, numX=1, copyTree=None): # defaults to tree of depth 2 if no parameter given
         if copyTree == None:
             self.root = Node(random.choice(['+', '-', '/', '*']))
-            self.buildTree(self.root, 1, maxDepth) # constructs the tree
+            xValues = []
+            for i in range(numX):
+                xValues.append('x' + str(i + 1))
+            self.buildTree(self.root, 1, maxDepth, xValues) # constructs the tree
             self.depth = maxDepth
+            self.xVals = xValues
         else:
             self.root = self.copyTree(copyTree.root)
             self.depth = copyTree.depth
+            self.xVals = copyTree.xVals
         
     # Recursively builds the tree to the specified max depth
     # parameters: 
     #     curNode - Node object of the current node to create children for
     #     curDepth - int of what layer the current node is at 
     #     maxDepth - int of how many layers to build the tree out
-    # TODO: add x1, x2, ...
-    def buildTree(self, curNode, curDepth, maxDepth):
+    def buildTree(self, curNode, curDepth, maxDepth, xList):
         ops = ['+', '-', '*', '/']
         if curDepth < maxDepth:
             curNode.left = Node(random.choice(ops))
-            self.buildTree(curNode.left, curDepth+1, maxDepth)
+            self.buildTree(curNode.left, curDepth+1, maxDepth, xList)
             curNode.right = Node(random.choice(ops))
-            self.buildTree(curNode.right, curDepth+1, maxDepth)
+            self.buildTree(curNode.right, curDepth+1, maxDepth, xList)
         else:
-            # using 2:1 for integers to x's to avoid too many x's but could change in future
-            curNode.left = Node(random.choice([random.randrange(-2, 3), random.randrange(-2, 3), 'x']))
-            curNode.right = Node(random.choice([random.randrange(-2, 3), random.randrange(-2, 3), 'x']))
+            curNode.left = Node(random.choice([random.randrange(-2, 3), random.choice(xList)]))
+            curNode.right = Node(random.choice([random.randrange(-2, 3), random.choice(xList)]))
             
     # Recursively creates a copy of the original tree for manipulation
     # parameters:
@@ -56,12 +59,11 @@ class Tree():
     #     dataSet - list of pairs of floats/int representing [[x1, f(x1)], [x2, f(x2)], ...]
     # returns: float, returns the mean square error of the data set and current tree 
     def fitness(self, dataSet):
-        print(dataSet)
         MSE = 0 
         for i in range(len(dataSet)):
             xValues = {}
             for j in range(len(dataSet[i]) - 1):
-                xValue['x' + str(j)] = dataSet[i][j]
+                xValues['x' + str(j + 1)] = dataSet[i][j]
             MSE += (self.evaluate(self.root, xValues) - dataSet[i][-1])**2 # calculate mse for each data point
         return MSE / len(dataSet)
     
@@ -70,29 +72,28 @@ class Tree():
     # for the fitness method.
     # parameters:
     #     curNode - a Node object to evaluate the current value
-    #     x - int/float which is the current 'x' to evaluate the function at
+    #     xValues - Dict, {x1:value, x2:value, ...}
     # returns: float, returns the value after evaluating the tree at 
     #          the current 'x' value 
-    # TODO: change line 89 to x1, x2, ...
-    def evaluate(self, curNode, x):
+    def evaluate(self, curNode, xValues):
         if curNode.value == '+':
-            return self.evaluate(curNode.left, x) + self.evaluate(curNode.right, x)
+            return self.evaluate(curNode.left, xValues) + self.evaluate(curNode.right, xValues)
         elif curNode.value == '-':
-            return self.evaluate(curNode.left, x) - self.evaluate(curNode.right, x)
+            return self.evaluate(curNode.left, xValues) - self.evaluate(curNode.right, xValues)
         elif curNode.value == '*':
-            return self.evaluate(curNode.left, x) * self.evaluate(curNode.right, x)
+            return self.evaluate(curNode.left, xValues) * self.evaluate(curNode.right, xValues)
         elif curNode.value == '/':
-            right = self.evaluate(curNode.right, x)
+            right = self.evaluate(curNode.right, xValues)
             if right != 0:
-                return self.evaluate(curNode.left, x) / right
+                return self.evaluate(curNode.left, xValues) / right
             else:
                 return 1
-        elif curNode.value == 'x':
-            return x
-        else: 
+        elif type(curNode.value) == int:
             return curNode.value
+        else:
+            return xValues[curNode.value]
     
-    # TODO: same change as line 89 on 104 for x1, x2, ...
+    # TODO: change elif and else for x1, x2, ...
     def fancyPrint(self, curNode):
         if curNode.value == '+':
             return f'({self.fancyPrint(curNode.left)} + {self.fancyPrint(curNode.right)})'
@@ -102,8 +103,6 @@ class Tree():
             return f'({self.fancyPrint(curNode.left)} * {self.fancyPrint(curNode.right)})'
         elif curNode.value == '/':
             return f'({self.fancyPrint(curNode.left)} / {self.fancyPrint(curNode.right)})'
-        elif curNode.value == 'x':
-            return 'x'
         else: 
             if str(curNode.value)[0] == '-':
                 return f'({str(curNode.value)})'

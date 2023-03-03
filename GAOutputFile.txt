@@ -1,0 +1,95 @@
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 100
+	INITTREEDEPTH = 2 
+	MUTATEPROB = 0.3 
+	MAXGEN = 20 
+	TOURNEYSIZE = 25 
+	SURVIVALRATE = 0.3
+
+	TOP Five for POPULATION 0
+
+[1] FUNCTION: ((x1 + x1) * ((-2) + x1)) 
+    MSE: 120.4650950860463
+
+[2] FUNCTION: ((x1 + x1) * ((-2) + x1)) 
+    MSE: 120.4650950860463
+
+[3] FUNCTION: ((x1 + x1) * ((-2) + x1)) 
+    MSE: 120.4650950860463
+
+[4] FUNCTION: ((x1 + x1) * ((-2) + x1)) 
+    MSE: 120.4650950860463
+
+[5] FUNCTION: ((x1 + x1) * ((-2) + x1)) 
+    MSE: 120.4650950860463
+
+	TOP Five for POPULATION 1
+
+[1] FUNCTION: ((x1 + x1) * ((-2) + x1)) 
+    MSE: 120.4650950860463
+
+[2] FUNCTION: ((x1 + x1) * ((-2) + x1)) 
+    MSE: 120.4650950860463
+
+[3] FUNCTION: ((x1 + x1) * ((-2) + x1)) 
+    MSE: 120.4650950860463
+
+[4] FUNCTION: ((x1 + x1) * ((-2) + x1)) 
+    MSE: 120.4650950860463
+
+[5] FUNCTION: ((x1 + x1) * ((-2) + x1)) 
+    MSE: 120.4650950860463
+
+	TOP Five for POPULATION 2
+
+[1] FUNCTION: ((x1 * x1) - (x1 + x1)) 
+    MSE: 329.31282102431203
+
+[2] FUNCTION: ((x1 * x1) - (x1 + x1)) 
+    MSE: 329.31282102431203
+
+[3] FUNCTION: ((x1 * x1) - (x1 + x1)) 
+    MSE: 329.31282102431203
+
+[4] FUNCTION: ((x1 * x1) - (x1 + x1)) 
+    MSE: 329.31282102431203
+
+[5] FUNCTION: ((x1 * x1) - (x1 + x1)) 
+    MSE: 329.31282102431203
+
+	TOP Five for POPULATION 3
+
+[1] FUNCTION: ((x1 - 2) * (2 * x1)) 
+    MSE: 120.4650950860463
+
+[2] FUNCTION: ((x1 - 2) * (2 * x1)) 
+    MSE: 120.4650950860463
+
+[3] FUNCTION: ((x1 - 2) * (2 * x1)) 
+    MSE: 120.4650950860463
+
+[4] FUNCTION: ((x1 - 2) * (2 * x1)) 
+    MSE: 120.4650950860463
+
+[5] FUNCTION: ((x1 - 2) * (2 * x1)) 
+    MSE: 120.4650950860463
+
+	TOP Five for POPULATION 4
+
+[1] FUNCTION: ((2 - x1) / ((-1) / x1)) 
+    MSE: 329.258197024312
+
+[2] FUNCTION: ((2 - x1) / ((-1) / x1)) 
+    MSE: 329.258197024312
+
+[3] FUNCTION: ((2 - x1) / ((-1) / x1)) 
+    MSE: 329.258197024312
+
+[4] FUNCTION: ((2 - x1) / ((-1) / x1)) 
+    MSE: 329.258197024312
+
+[5] FUNCTION: ((2 - x1) / ((-1) / x1)) 
+    MSE: 329.258197024312
+
+###########################
