@@ -37,7 +37,7 @@ def GeneticAlgorithm(DATASET, POPSIZE, INITTREEDEPTH, MUTATEPROB, MAXGEN, TOURNE
         pbarTwo = tqdm(desc='CURRENT POPULATION', total = POPSIZE)
         while generation < MAXGEN:
             prevMSEavg = MSEsum / POPSIZE
-            bestMSE = 1e16 # dummy value
+            bestMSE = 1e19 # dummy value
             nextGen = [] 
             nextFitDict = {} # next gen {tree:fitness}
             nextRank = []
@@ -71,6 +71,8 @@ def GeneticAlgorithm(DATASET, POPSIZE, INITTREEDEPTH, MUTATEPROB, MAXGEN, TOURNE
             rankFitList = nextRank
             curFitDict = nextFitDict
             rankFitDict = nextRankDict 
+            if bestMSE < 1e5:
+                break
 
         rankFitList.sort()
         bestFunc = []

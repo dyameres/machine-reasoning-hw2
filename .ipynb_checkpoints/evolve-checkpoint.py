@@ -75,6 +75,7 @@ def crossover(treeOne, treeTwo):
 #     curNode - Node, current node to check 
 #     curDepth - int, current depth in the tree
 #     goalDepth - int, max depth to go
+# TODO: change this to test mutate probability at each node
 def mutate(curTree, curNode, curDepth, goalDepth):
     try:
         if (randrange(2)):
