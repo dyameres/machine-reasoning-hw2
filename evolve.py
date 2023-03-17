@@ -1,5 +1,5 @@
 from Tree import Tree 
-from random import randrange, choice
+from random import randrange, choice, random
 
 # crosses over part of one tree into another. No return. 
 # parameters: 
@@ -63,8 +63,8 @@ def xoverFinder(curNode, curDepth, goalDepth):
 
 # TODO: Look into how to avoid bloating
 def crossover(treeOne, treeTwo):
-    MAXDEPTH = 8
-    newNode = xoverFinder(treeOne.root, 0, randrange(1, MAXDEPTH))
+    MAXDEPTH = 4
+    newNode = xoverFinder(treeOne.root, 0, randrange(0, MAXDEPTH))
     xoverInsert(treeTwo.root, 0, randrange(MAXDEPTH), newNode)
     return treeTwo
 
@@ -75,38 +75,36 @@ def crossover(treeOne, treeTwo):
 #     curNode - Node, current node to check 
 #     curDepth - int, current depth in the tree
 #     goalDepth - int, max depth to go
-# TODO: change this to test mutate probability at each node
-def mutate(curTree, curNode, curDepth, goalDepth):
+def mutate(curTree, curNode, MUTATEPROB):
     try:
-        if (randrange(2)):
-            temp = curNode.right
-        else:
-            temp = curNode.left
-        if (curDepth != goalDepth):
-            mutate(curTree, temp, curDepth + 1, goalDepth)
-        else:
-            temp = curNode.value    
-        try:
-            if curNode.value[0] == 'x':
+        mutate(curTree, curNode.left, MUTATEPROB)
+        mutate(curTree, curNode.right, MUTATEPROB)
+        if (random() < MUTATEPROB):
+            temp = curNode.value
+            try:
+                if curNode.value[0] == 'x':
+                    while curNode.value == temp:
+                        curNode.value = choice([randrange(-5, 6), choice(curTree.xVals)])
+                else:
+                    while curNode.value == temp:
+                        curNode.value = choice(['+', '-', '*', '/'])
+            except TypeError:
                 while curNode.value == temp:
-                    curNode.value = choice([randrange(-2, 3), choice(curTree.xVals)])
-            else:
-                while curNode.value == temp:
-                    curNode.value = choice(['+', '-', '*', '/'])
-        except TypeError:
-            while curNode.value == temp:
-                curNode.value = choice([randrange(-2, 3), choice(curTree.xVals)])
+                    curNode.value = choice([randrange(-5, 6), choice(curTree.xVals)])
     except AttributeError:
-        try:
-            if curNode.value[0] == 'x':
+        if (random() < MUTATEPROB):
+            temp = curNode.value
+            try:
+                if curNode.value[0] == 'x':
+                    while curNode.value == temp:
+                        curNode.value = choice([randrange(-5, 6), choice(curTree.xVals)])
+                else:
+                    while curNode.value == temp:
+                        curNode.value = choice(['+', '-', '*', '/'])
+            except TypeError:
                 while curNode.value == temp:
-                    curNode.value = choice([randrange(-2, 3), choice(curTree.xVals)])
-            else:
-                while curNode.value == temp:
-                    curNode.value = choice(['+', '-', '*', '/'])
-        except TypeError:
-            while curNode.value == temp:
-                curNode.value = choice([randrange(-2, 3), choice(curTree.xVals)])
+                    curNode.value = choice([randrange(-5, 6), choice(curTree.xVals)])
+                
                 
 # Implements tournament selection to determine a suitable parent
 # for Genetic Algorithm. 

@@ -3,8 +3,6 @@ from random import shuffle
 
 # dataSet = 'hw2 datasets/dataset1.csv'
 
-# TODO: add functionality for multivariable functions (see dataset2.csv)
-
 # Reads in the given csv file and creates a list of lists 
 # corresponding to each row of the csv without the header row. Then shuffles 
 # the list a separates the data into a train data set and a test data set. 

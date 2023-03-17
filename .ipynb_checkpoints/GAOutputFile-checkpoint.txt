@@ -215,3 +215,257 @@ CURRENT PARAMETERS:
     MSE: 12.373565875811453
 
 ###########################
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset2.csv' 
+	POPSIZE = 2000
+	INITTREEDEPTH = 3 
+	MUTATEPROB = 0.3 
+	MAXGEN = 10 
+	TOURNEYSIZE = 50 
+	SURVIVALRATE = 0.5
+
+	TOP Five for POPULATION 0
+
+[1] FUNCTION: ((((((x1 * 2) + x2) * 2) * 2) / (x1 + (-2))) * ((((((x1 * 2) + x2) * 2) * 2) + ((((x1 * 2) + x2) * 2) * 2)) / (x2 / x3))) 
+    MSE: 1.260510412756009e+18
+
+[2] FUNCTION: ((((((x1 * 2) + x2) * 2) * 2) / ((x1 + (-2)) + (-2))) * ((x2 + ((((x1 * 2) + x2) * 2) * 2)) / (x2 / x3))) 
+    MSE: 1.2740726148444485e+18
+
+[3] FUNCTION: ((((((x1 * 2) + x2) * 2) * 2) / (x1 + (-2))) * ((((((x1 * 2) + x2) * 2) * 2) + x2) / (x2 / x3))) 
+    MSE: 1.274072618380695e+18
+
+[4] FUNCTION: ((((((x1 * 2) + x2) * 2) * 2) / (x1 + (-2))) * ((((((x1 * 2) + x2) * 2) * 2) + x2) / (x2 / x3))) 
+    MSE: 1.274072618380695e+18
+
+[5] FUNCTION: ((((((x1 * 2) + x2) * 2) * 2) / (x1 + (-2))) * ((((((x1 * 2) + x2) * 2) * 2) + x2) / (x2 / x3))) 
+    MSE: 1.274072618380695e+18
+
+###########################
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset2.csv' 
+	POPSIZE = 2000
+	INITTREEDEPTH = 3 
+	MUTATEPROB = 0.4 
+	MAXGEN = 10 
+	TOURNEYSIZE = 200 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 0
+
+[1] FUNCTION: (((2 * ((2 * (2 * ((2 * ((-1) - 2)) - 2))) * 2)) * (x1 + x2)) * ((2 * (((-1) - 2) - 2)) / (x1 / x3))) 
+    MSE: 1.1372690415814271e+18
+
+[2] FUNCTION: (((2 * ((2 * (2 * ((2 * ((-1) - 2)) - 2))) * 2)) * (x1 + x2)) * ((2 * (((-1) - 2) - 2)) / (x2 / x3))) 
+    MSE: 1.1372704313494213e+18
+
+[3] FUNCTION: (((2 * ((2 * (2 * ((2 * ((-1) - 2)) - 2))) * 2)) * (x1 + x2)) * ((2 * (((-1) - 2) - 2)) / (x2 / x3))) 
+    MSE: 1.1372704313494213e+18
+
+[4] FUNCTION: (((2 * ((2 * (2 * ((2 * ((-1) - 2)) - 2))) * 2)) * (x1 + x2)) * ((2 * (((-1) - 2) - 2)) / (x2 / x3))) 
+    MSE: 1.1372704313494213e+18
+
+[5] FUNCTION: (((2 * ((2 * (2 * ((2 * ((-1) - 2)) - 2))) * 2)) * (x1 + x2)) * ((2 * (((-1) - 2) - 2)) / (x2 / x3))) 
+    MSE: 1.1372704313494213e+18
+
+###########################
+
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset2.csv' 
+	POPSIZE = 200
+	INITTREEDEPTH = 2 
+	MUTATEPROB = 0.1 
+	MAXGEN = 10 
+	TOURNEYSIZE = 40 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 0
+
+[1] FUNCTION: ((x2 - x3) + (x2 + (-1))) 
+    MSE: 1.291903072915134e+18
+
+[2] FUNCTION: ((x2 - x3) + (x2 + (-1))) 
+    MSE: 1.291903072915134e+18
+
+[3] FUNCTION: ((x2 - x3) + (x2 + (-1))) 
+    MSE: 1.291903072915134e+18
+
+[4] FUNCTION: ((x2 - x3) + (x2 + (-1))) 
+    MSE: 1.291903072915134e+18
+
+[5] FUNCTION: ((x2 - x3) + (x2 + (-1))) 
+    MSE: 1.291903072915134e+18
+
+###########################
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 200
+	INITTREEDEPTH = 2 
+	MUTATEPROB = 0.1 
+	MAXGEN = 10 
+	TOURNEYSIZE = 40 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 0
+
+[1] FUNCTION: ((x1 * x1) - (x1 + x1)) 
+    MSE: 329.31282102431203
+
+[2] FUNCTION: ((x1 * x1) - (x1 + x1)) 
+    MSE: 329.31282102431203
+
+[3] FUNCTION: ((x1 * x1) - (x1 + x1)) 
+    MSE: 329.31282102431203
+
+[4] FUNCTION: ((x1 * x1) - (x1 + x1)) 
+    MSE: 329.31282102431203
+
+[5] FUNCTION: ((x1 * x1) - (x1 + x1)) 
+    MSE: 329.31282102431203
+
+###########################
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 200
+	INITTREEDEPTH = 2 
+	MUTATEPROB = 0.1 
+	MAXGEN = 10 
+	TOURNEYSIZE = 40 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 0
+
+[1] FUNCTION: ((x1 - 2) * (2 * x1)) 
+    MSE: 120.4650950860463
+
+[2] FUNCTION: ((x1 - 2) * (2 * x1)) 
+    MSE: 120.4650950860463
+
+[3] FUNCTION: ((x1 - 2) * (2 * x1)) 
+    MSE: 120.4650950860463
+
+[4] FUNCTION: ((x1 - 2) * (2 * x1)) 
+    MSE: 120.4650950860463
+
+[5] FUNCTION: ((x1 - 2) * (2 * x1)) 
+    MSE: 120.4650950860463
+
+###########################
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 500
+	INITTREEDEPTH = 2 
+	MUTATEPROB = 0.05 
+	MAXGEN = 10 
+	TOURNEYSIZE = 200 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 0
+
+[1] FUNCTION: ((x1 - 2) * (x1 + x1)) 
+    MSE: 120.4650950860463
+
+[2] FUNCTION: ((x1 - 2) * (x1 + x1)) 
+    MSE: 120.4650950860463
+
+[3] FUNCTION: ((x1 - 2) * (x1 + x1)) 
+    MSE: 120.4650950860463
+
+[4] FUNCTION: ((x1 - 2) * (x1 + x1)) 
+    MSE: 120.4650950860463
+
+[5] FUNCTION: ((x1 - 2) * (x1 + x1)) 
+    MSE: 120.4650950860463
+
+###########################
+
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 400
+	INITTREEDEPTH = 3 
+	MUTATEPROB = 0.05 
+	MAXGEN = 10 
+	TOURNEYSIZE = 50 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 0
+
+[1] FUNCTION: (((2 / 0) - (x1 + (-2))) * ((2 - (-2)) - (x1 - 0))) 
+    MSE: 12.373565875811453
+
+[2] FUNCTION: (((2 / 0) - (x1 + (-2))) * ((2 - (-2)) - (x1 - 0))) 
+    MSE: 12.373565875811453
+
+[3] FUNCTION: (((2 / 0) - (x1 + (-2))) * ((2 - (-2)) - (x1 - 0))) 
+    MSE: 12.373565875811453
+
+[4] FUNCTION: (((2 / 0) - (x1 + (-2))) * ((2 - (-2)) - (x1 - 0))) 
+    MSE: 12.373565875811453
+
+[5] FUNCTION: (((2 / 0) - (x1 + (-2))) * ((2 - (-2)) - (x1 - 0))) 
+    MSE: 12.373565875811453
+
+###########################
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 1000
+	INITTREEDEPTH = 3 
+	MUTATEPROB = 0.05 
+	MAXGEN = 10 
+	TOURNEYSIZE = 50 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 0
+
+[1] FUNCTION: (((x1 / x1) - ((-2) + x1)) * ((2 - x1) + (2 / 1))) 
+    MSE: 12.373565875811453
+
+[2] FUNCTION: (((x1 / x1) - ((-2) + x1)) * ((2 - x1) + (2 / 1))) 
+    MSE: 12.373565875811453
+
+[3] FUNCTION: (((x1 / x1) - ((-2) + x1)) * ((2 - x1) + (2 / 1))) 
+    MSE: 12.373565875811453
+
+[4] FUNCTION: (((x1 / x1) - ((-2) + x1)) * ((2 - x1) + (2 / 1))) 
+    MSE: 12.373565875811453
+
+[5] FUNCTION: (((x1 / x1) - ((-2) + x1)) * ((2 - x1) + (2 / 1))) 
+    MSE: 12.373565875811453
+
+###########################
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 1000
+	INITTREEDEPTH = 3 
+	MUTATEPROB = 0.1 
+	MAXGEN = 10 
+	TOURNEYSIZE = 50 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 0
+
+[1] FUNCTION: (((((2 * x1) - ((-3) / 4)) - x1) + ((-1) + 2)) + (((-4) + x1) * ((-3) + x1))) 
+    MSE: 0.06305835001150105
+
+[2] FUNCTION: (((((2 * x1) - ((-3) / 4)) - x1) + ((-1) + 2)) + (((-4) + x1) * ((-3) + x1))) 
+    MSE: 0.06305835001150105
+
+[3] FUNCTION: (((((2 * x1) - ((-3) / 4)) - x1) + ((-1) + 2)) + (((-4) + x1) * ((-3) + x1))) 
+    MSE: 0.06305835001150105
+
+[4] FUNCTION: (((((2 * x1) - ((-3) / 4)) - x1) + ((-1) + 2)) + (((-4) + x1) * ((-3) + x1))) 
+    MSE: 0.06305835001150105
+
+[5] FUNCTION: (((((2 * x1) - ((-3) / 4)) - x1) + ((-1) + 2)) + (((-4) + x1) * ((-3) + x1))) 
+    MSE: 0.06305835001150105
+
+###########################

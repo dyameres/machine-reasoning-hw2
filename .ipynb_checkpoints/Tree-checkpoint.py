@@ -34,8 +34,8 @@ class Tree():
             curNode.right = Node(random.choice(ops))
             self.buildTree(curNode.right, curDepth+1, maxDepth, xList)
         else:
-            curNode.left = Node(random.choice([random.randrange(-2, 3), random.choice(xList)]))
-            curNode.right = Node(random.choice([random.randrange(-2, 3), random.choice(xList)]))
+            curNode.left = Node(random.choice([random.randrange(-5, 6), random.choice(xList)]))
+            curNode.right = Node(random.choice([random.randrange(-5, 6), random.choice(xList)]))
             
     # Recursively creates a copy of the original tree for manipulation
     # parameters:
@@ -65,7 +65,7 @@ class Tree():
             for j in range(len(dataSet[i]) - 1):
                 xValues['x' + str(j + 1)] = dataSet[i][j]
             MSE += (self.evaluate(self.root, xValues) - dataSet[i][-1])**2 # calculate mse for each data point
-        return MSE / len(dataSet)
+        return MSE / len(dataSet) # taking mean of the squared error 
     
     # Evaluates a symbolic regression tree recursively through tree 
     # traversal using Node objects and their children. Helper function
@@ -88,12 +88,55 @@ class Tree():
                 return self.evaluate(curNode.left, xValues) / right
             else:
                 return 1
+        # try to add flag here to reduce tree
         elif type(curNode.value) == int:
             return curNode.value
         else:
             return xValues[curNode.value]
+        
+    # COPY OF EVALUATE TO TEST REDUCTION  
+    def reduceEvaluate(self, curNode, xValues):
+        tempSimplify = 0
+        if curNode.value == '+':
+            left, Lsimplify = self.evaluate(curNode.left, xValues)
+            right, Rsimplify = self.evaluate(curNode.right, xValues)
+            if Lsimplify == 1 and Rsimplify == 1:
+                curNode.left = None
+                curNode.right = None 
+                curNode.value = left + right
+                tempSimplify = 1
+            return left + right, tempSimplify
+        elif curNode.value == '-':
+            left, Lsimplify = self.evaluate(curNode.left, xValues)
+            right, Rsimplify = self.evaluate(curNode.right, xValues)
+            if Lsimplify == 1 and Rsimplify == 1:
+                curNode.left = None
+                curNode.right = None 
+                curNode.value = left - right
+                tempSimplify = 1
+            return left - right, tempSimplify
+        elif curNode.value == '*':
+            left, Lsimplify = self.evaluate(curNode.left, xValues)
+            right, Rsimplify = self.evaluate(curNode.right, xValues)
+            if Lsimplify == 1 and Rsimplify == 1:
+                curNode.left = None
+                curNode.right = None 
+                curNode.value = left * right
+                tempSimplify = 1
+            return left * right, tempSimplify
+        # try to simplify for division as well 
+        elif curNode.value == '/':
+            right = self.evaluate(curNode.right, xValues)
+            if right != 0:
+                return self.evaluate(curNode.left, xValues) / right
+            else:
+                return 1
+        # try to add flag here to reduce tree
+        elif type(curNode.value) == int:
+            return curNode.value, 1
+        else:
+            return xValues[curNode.value]
     
-    # TODO: change elif and else for x1, x2, ...
     def fancyPrint(self, curNode):
         if curNode.value == '+':
             return f'({self.fancyPrint(curNode.left)} + {self.fancyPrint(curNode.right)})'

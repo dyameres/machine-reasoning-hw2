@@ -4,7 +4,7 @@ from csvReader import formatData
 from random import randrange, random
 from tqdm import tqdm
 
-def GeneticAlgorithm(DATASET, POPSIZE, INITTREEDEPTH, MUTATEPROB, MAXGEN, TOURNEYSIZE, SURVIVALRATE, OUTPUTFILE):
+def GeneticAlgorithm(DATASET, POPSIZE, INITTREEDEPTH, MUTATEPROB, MAXGEN, TOURNEYSIZE, SURVIVALRATE):
     
         generation = 0 
         bestMSE = 1e16 # dummy value
@@ -53,8 +53,7 @@ def GeneticAlgorithm(DATASET, POPSIZE, INITTREEDEPTH, MUTATEPROB, MAXGEN, TOURNE
                 treeOne = Tree(copyTree=tournament(curGen, TOURNEYSIZE, curFitDict)) 
                 treeTwo = Tree(copyTree=tournament(curGen, TOURNEYSIZE, curFitDict)) 
                 child = crossover(treeOne, treeTwo)
-                if random() < MUTATEPROB:
-                    mutate(child, child.root, 0, randrange(child.depth + 1))
+                mutate(child, child.root, MUTATEPROB)
                 curFit = child.fitness(DATASET)
                 if curFit < bestMSE:
                     bestMSE = curFit       
@@ -71,13 +70,12 @@ def GeneticAlgorithm(DATASET, POPSIZE, INITTREEDEPTH, MUTATEPROB, MAXGEN, TOURNE
             rankFitList = nextRank
             curFitDict = nextFitDict
             rankFitDict = nextRankDict 
-            if bestMSE < 1e5:
+            if bestMSE < 1e-3: # we'll say it converged 
                 break
 
         rankFitList.sort()
         bestFunc = []
         bestFit = []
         for i in range(5):
-            bestFunc.append(rankFitDict[rankFitList[i]].fancyPrint(rankFitDict[rankFitList[i]].root))
-            bestFit.append(rankFitDict[rankFitList[i]].fitness(DATASET))
-        return bestFunc, bestFit
+            bestFunc.append(rankFitDict[rankFitList[i]])
+        return bestFunc
