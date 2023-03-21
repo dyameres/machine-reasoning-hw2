@@ -52,7 +52,7 @@ def GeneticAlgorithm(DATASET, POPSIZE, INITTREEDEPTH, MUTATEPROB, MAXGEN, TOURNE
             while len(nextGen) < POPSIZE:
                 treeOne = Tree(copyTree=tournament(curGen, TOURNEYSIZE, curFitDict)) 
                 treeTwo = Tree(copyTree=tournament(curGen, TOURNEYSIZE, curFitDict)) 
-                child = crossover(treeOne, treeTwo)
+                child = crossover(treeOne, treeTwo, INITTREEDEPTH)
                 mutate(child, child.root, MUTATEPROB)
                 curFit = child.fitness(DATASET)
                 if curFit < bestMSE:
@@ -72,10 +72,10 @@ def GeneticAlgorithm(DATASET, POPSIZE, INITTREEDEPTH, MUTATEPROB, MAXGEN, TOURNE
             rankFitDict = nextRankDict 
             if bestMSE < 1e-3: # we'll say it converged 
                 break
-
+            with open('BestMSE.txt', 'a') as f:
+                f.write(f'[{generation}]: {bestMSE}\n')
         rankFitList.sort()
         bestFunc = []
-        bestFit = []
         for i in range(5):
             bestFunc.append(rankFitDict[rankFitList[i]])
         return bestFunc

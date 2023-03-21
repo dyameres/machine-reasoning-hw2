@@ -1,11 +1,34 @@
 from Tree import Tree
 from evolve import mutate, crossover, tournament
+from Node import Node
+from csvReader import formatData
 
-def x():
-    return 0, 1
+data, td = formatData('hw2 datasets/dataset1.csv')
 
-y = x()
-print(y[0])
+t1 = Tree()
+t1.root.left = None
+t1.root.right = None
+
+t1.root.value = '+'
+t1.root.right = Node(5)
+t1.root.left = Node('*')
+t1.root.left.left = Node('-')
+t1.root.left.left.left = Node('x1')
+t1.root.left.left.right = Node(3)
+t1.root.left.right = Node('-')
+t1.root.left.right.left = Node('x1')
+t1.root.left.right.right = Node(3)
+print(t1)
+print(t1.fitness(data))
+print(t1.fitness(td))
+
+# x = {'x1':1}
+# tree = Tree(6, numX=3)
+# print(tree)
+# print(tree.fancyPrint(tree.root))
+# tree.simplifyEvaluate(tree.root, x)
+# print()
+# print(tree.fancyPrint(tree.root))
 
 # for i in range(5):
 #     print(f'RUN {i}')

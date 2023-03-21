@@ -191,3 +191,135 @@ CURRENT PARAMETERS:
     TEST DATA MSE: 0.9992858469820051
 
 ###########################
+Took about 15 min
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 1000
+	INITTREEDEPTH = 4 
+	MUTATEPROB = 0.1 
+	MAXGEN = 10 
+	TOURNEYSIZE = 50 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 1
+
+[1] FUNCTION: (((x1 + (-2)) * (x1 - 2)) - (((-8) + (x1 * 2)) + (-2))) 
+    TEST DATA MSE: 0.0006050069819999995
+
+[2] FUNCTION: (((x1 + (-2)) * (x1 - 2)) - (((-8) + (x1 * 2)) + 0)) 
+    TEST DATA MSE: 3.9979666869819805
+
+[3] FUNCTION: (((x1 + (-2)) * (x1 - 2)) - (((-8) + (x1 * 2)) + 0)) 
+    TEST DATA MSE: 3.9979666869819805
+
+[4] FUNCTION: (((x1 + 2) + 4) - (((x1 + (-2)) * (4 - x1)) - (((-1) / x1) + (1 / x1)))) 
+    TEST DATA MSE: 8.265165915382017
+
+[5] FUNCTION: ((((-2) + (x1 + (-3))) * ((-1) - (2 - x1))) + x1) 
+    TEST DATA MSE: 9.334310418581984
+
+	TOP Five for POPULATION 2
+
+[1] FUNCTION: (5 - (((x1 - 3) - 0) * (2 - (x1 + (-1))))) 
+    TEST DATA MSE: 0.0006050069819999982
+
+[2] FUNCTION: (4 - (((x1 - 3) - 0) * (2 - (x1 + (-1))))) 
+    TEST DATA MSE: 0.9992858469820051
+
+[3] FUNCTION: (4 - (((x1 - 3) - 0) * (2 - (x1 + (-1))))) 
+    TEST DATA MSE: 0.9992858469820051
+
+[4] FUNCTION: (4 - (((x1 - 3) - 0) * (2 - (x1 + (-1))))) 
+    TEST DATA MSE: 0.9992858469820051
+
+[5] FUNCTION: (4 - (((x1 - 3) - 0) * (2 - (x1 + (-1))))) 
+    TEST DATA MSE: 0.9992858469820051
+
+###########################
+Took about 5 min
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 500
+	INITTREEDEPTH = 3 
+	MUTATEPROB = 0.1 
+	MAXGEN = 100 
+	TOURNEYSIZE = 25 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 1
+
+[1] FUNCTION: ((((-3) + x1) * (x1 + (-3))) - (-5)) 
+    TEST DATA MSE: 0.0006050069819999981
+
+[2] FUNCTION: ((((-3) + x1) * (x1 + (-3))) - (-4)) 
+    TEST DATA MSE: 0.9992858469820051
+
+[3] FUNCTION: ((((-3) + x1) * (x1 + (-3))) - (-4)) 
+    TEST DATA MSE: 0.9992858469820051
+
+[4] FUNCTION: ((((-3) + x1) * (x1 + (-3))) - (-4)) 
+    TEST DATA MSE: 0.9992858469820051
+
+[5] FUNCTION: ((((-3) + x1) * (x1 + (-3))) - (-4)) 
+    TEST DATA MSE: 0.9992858469820051
+
+###########################
+
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 200
+	INITTREEDEPTH = 4 
+	MUTATEPROB = 0.1 
+	MAXGEN = 20 
+	TOURNEYSIZE = 20 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 1
+
+[1] FUNCTION: ((((x1 * x1) + ((-1) / 4)) - ((x1 / 0) - ((-7) + x1))) - ((((-3) / (-4)) - ((-6) * x1)) - ((8 - (-10)) + (6 - x1)))) 
+    TEST DATA MSE: 1.0019241669819925
+
+[2] FUNCTION: ((((x1 * x1) + ((-1) / 4)) - ((x1 / 0) - ((-7) + x1))) - ((((-3) / (-4)) - ((-6) * x1)) - ((8 - (-10)) + (6 - x1)))) 
+    TEST DATA MSE: 1.0019241669819925
+
+[3] FUNCTION: ((((5 * x1) + (8 - x1)) / ((x1 + 0) - ((-7) + (-4)))) - ((((-3) + x1) - ((-5) * x1)) - ((x1 * x1) - (0 + (-10))))) 
+    TEST DATA MSE: 1.3097403940518086
+
+[4] FUNCTION: ((((x1 * x1) + (x1 - 2)) + ((x1 - x1) + ((-9) - x1))) - ((((-8) + x1) - ((-5) * x1)) - ((8 - (-10)) + (x1 / (-5))))) 
+    TEST DATA MSE: 1.3457685245019992
+
+[5] FUNCTION: ((((x1 * x1) + ((-9) - x1)) - (((-6) + x1) - (x1 + x1))) - (((x1 / 3) - ((-6) * x1)) - ((8 - (-10)) + (1 / (-5))))) 
+    TEST DATA MSE: 1.5779714899597734
+
+###########################
+
+CURRENT PARAMETERS: 
+	DATASET = 'hw2 datasets/dataset1.csv' 
+	POPSIZE = 200
+	INITTREEDEPTH = 4 
+	MUTATEPROB = 0.1 
+	MAXGEN = 20 
+	TOURNEYSIZE = 20 
+	SURVIVALRATE = 0.4
+
+	TOP Five for POPULATION 1
+
+[1] FUNCTION: ((((x1 + (-2)) * (x1 + (-4))) - ((x1 - x1) * (x1 - x1))) - ((((-2) + 0) - ((-2) * (-5))) - ((x1 - x1) - (5 - (-1))))) 
+    TEST DATA MSE: 0.0006050069819999967
+
+[2] FUNCTION: ((((x1 + (-2)) * (x1 + (-4))) - ((x1 / (-3)) + (x1 + (-5)))) - (((5 - 4) * ((-1) / 3)) * ((4 * x1) + ((-3) * (-2))))) 
+    TEST DATA MSE: 4.631950643693103
+
+[3] FUNCTION: ((((x1 + (-2)) * (x1 + (-4))) - ((x1 - x1) * (x1 / (-4)))) - ((((-2) + (-1)) + (x1 / (-4))) - ((1 * 0) * (1 * (-4))))) 
+    TEST DATA MSE: 9.559230332831953
+
+[4] FUNCTION: ((((x1 + (-2)) * (x1 + (-4))) - ((x1 - x1) * (x1 / (-4)))) - ((((-2) + (-1)) + (x1 / (-4))) - ((1 * 0) * (1 * (-4))))) 
+    TEST DATA MSE: 9.559230332831953
+
+[5] FUNCTION: ((((x1 + (-2)) * (x1 + (-4))) - ((x1 - x1) * (x1 - x1))) - (((x1 - 4) * (4 / 3)) - ((1 * 0) * (1 / (-4))))) 
+    TEST DATA MSE: 15.089305271337615
+
+###########################

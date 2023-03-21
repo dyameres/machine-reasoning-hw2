@@ -64,7 +64,8 @@ class Tree():
             xValues = {}
             for j in range(len(dataSet[i]) - 1):
                 xValues['x' + str(j + 1)] = dataSet[i][j]
-            MSE += (self.evaluate(self.root, xValues) - dataSet[i][-1])**2 # calculate mse for each data point
+            # MSE += (self.simplifyEvaluate(self.root, xValues)[0] - dataSet[i][-1])**2 # calculate mse for each data point
+            MSE += (self.evaluate(self.root, xValues) - dataSet[i][-1])**2
         return MSE / len(dataSet) # taking mean of the squared error 
     
     # Evaluates a symbolic regression tree recursively through tree 
@@ -94,48 +95,66 @@ class Tree():
         else:
             return xValues[curNode.value]
         
-    # COPY OF EVALUATE TO TEST REDUCTION  
-    def reduceEvaluate(self, curNode, xValues):
+    def simplifyHelper(self, curNode, left, right, sign):
+        curNode.left = None
+        curNode.right = None
+        if sign == '+':
+            curNode.value = left + right
+        elif sign == '-':
+            curNode.value = left - right
+        elif sign == '*':
+            curNode.value = left * right
+        elif sign == '!':
+            curNode.value = 0
+        elif sign == '~':
+            curNode.value = 1
+        else:
+            curNode.value = int(left / right)
+            
+        
+    # COPY OF EVALUATE TO TEST SIMPLIFICATION   
+    def simplifyEvaluate(self, curNode, xValues):
         tempSimplify = 0
+        
+        if type(curNode.value) == int:
+            return curNode.value, 1
+        elif curNode.value[0] == 'x':
+            return xValues[curNode.value], 0
+        
+        left, Lsimplify = self.simplifyEvaluate(curNode.left, xValues)
+        right, Rsimplify = self.simplifyEvaluate(curNode.right, xValues)        
+        
         if curNode.value == '+':
-            left, Lsimplify = self.evaluate(curNode.left, xValues)
-            right, Rsimplify = self.evaluate(curNode.right, xValues)
-            if Lsimplify == 1 and Rsimplify == 1:
-                curNode.left = None
-                curNode.right = None 
-                curNode.value = left + right
-                tempSimplify = 1
+            if Lsimplify and Rsimplify:
+                tempSimplify = self.simplifyHelper(curNode, left, right, '+')
             return left + right, tempSimplify
         elif curNode.value == '-':
-            left, Lsimplify = self.evaluate(curNode.left, xValues)
-            right, Rsimplify = self.evaluate(curNode.right, xValues)
-            if Lsimplify == 1 and Rsimplify == 1:
-                curNode.left = None
-                curNode.right = None 
-                curNode.value = left - right
-                tempSimplify = 1
+            if curNode.left.value == curNode.right.value and curNode.left.value not in ['+', '-', '*', '/']:
+                tempSimplify = self.simplifyHelper(curNode, left, right, '!')
+            elif Lsimplify and Rsimplify:
+                tempSimplify = self.simplifyHelper(curNode, left, right, '-')
             return left - right, tempSimplify
         elif curNode.value == '*':
-            left, Lsimplify = self.evaluate(curNode.left, xValues)
-            right, Rsimplify = self.evaluate(curNode.right, xValues)
-            if Lsimplify == 1 and Rsimplify == 1:
-                curNode.left = None
-                curNode.right = None 
-                curNode.value = left * right
-                tempSimplify = 1
+            if Lsimplify and Rsimplify:
+                tempSimplify = self.simplifyHelper(curNode, left, right, '*')
+            elif curNode.left.value == 0 or curNode.right.value == 0:
+                tempSimplify = self.simplifyHelper(curNode, left, right, '!')
             return left * right, tempSimplify
-        # try to simplify for division as well 
-        elif curNode.value == '/':
-            right = self.evaluate(curNode.right, xValues)
-            if right != 0:
-                return self.evaluate(curNode.left, xValues) / right
-            else:
-                return 1
-        # try to add flag here to reduce tree
-        elif type(curNode.value) == int:
-            return curNode.value, 1
         else:
-            return xValues[curNode.value]
+            if left == 0:
+                tempSimplify = self.simplifyHelper(curNode, left, right, '!')
+                return 0, tempSimplify
+            elif right == 0:
+                if Lsimplify and Rsimplify:
+                    tempSimplify = self.simplifyHelper(curNode, left, right, '~')
+                return 1, tempSimplify 
+            elif curNode.left.value == curNode.right.value and curNode.left.value not in ['+', '-', '*', '/']:
+                tempSimplify = self.simplifyHelper(curNode, left, right, '~')
+                return 1, tempSimplify
+            else:
+                if Lsimplify and Rsimplify and ((left / right) == int(left / right)):
+                    tempSimplify = self.simplifyHelper(curNode, left, right, '/')
+                return left / right, tempSimplify
     
     def fancyPrint(self, curNode):
         if curNode.value == '+':

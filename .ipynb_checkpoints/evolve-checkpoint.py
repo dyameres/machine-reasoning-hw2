@@ -62,10 +62,10 @@ def xoverFinder(curNode, curDepth, goalDepth):
         return curNode
 
 # TODO: Look into how to avoid bloating
-def crossover(treeOne, treeTwo):
-    MAXDEPTH = 4
-    newNode = xoverFinder(treeOne.root, 0, randrange(0, MAXDEPTH))
-    xoverInsert(treeTwo.root, 0, randrange(MAXDEPTH), newNode)
+def crossover(treeOne, treeTwo, MAXDEPTH):
+    xDepth = randrange(0, MAXDEPTH)
+    newNode = xoverFinder(treeOne.root, 0, xDepth)
+    xoverInsert(treeTwo.root, 0, xDepth, newNode)
     return treeTwo
 
 # Recursively finds a random node from the tree and changes
