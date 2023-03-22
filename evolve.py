@@ -84,26 +84,26 @@ def mutate(curTree, curNode, MUTATEPROB):
             try:
                 if curNode.value[0] == 'x':
                     while curNode.value == temp:
-                        curNode.value = choice([randrange(-5, 6), choice(curTree.xVals)])
+                        curNode.value = choice([randrange(-1000, 1001), choice(curTree.xVals)])
                 else:
                     while curNode.value == temp:
                         curNode.value = choice(['+', '-', '*', '/'])
             except TypeError:
                 while curNode.value == temp:
-                    curNode.value = choice([randrange(-5, 6), choice(curTree.xVals)])
+                    curNode.value = choice([randrange(-1000, 1001), choice(curTree.xVals)])
     except AttributeError:
         if (random() < MUTATEPROB):
             temp = curNode.value
             try:
                 if curNode.value[0] == 'x':
                     while curNode.value == temp:
-                        curNode.value = choice([randrange(-5, 6), choice(curTree.xVals)])
+                        curNode.value = choice([randrange(-1000, 1001), choice(curTree.xVals)])
                 else:
                     while curNode.value == temp:
                         curNode.value = choice(['+', '-', '*', '/'])
             except TypeError:
                 while curNode.value == temp:
-                    curNode.value = choice([randrange(-5, 6), choice(curTree.xVals)])
+                    curNode.value = choice([randrange(-1000, 1001), choice(curTree.xVals)])
                 
                 
 # Implements tournament selection to determine a suitable parent

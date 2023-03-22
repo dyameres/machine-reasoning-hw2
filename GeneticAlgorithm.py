@@ -48,6 +48,8 @@ def GeneticAlgorithm(DATASET, POPSIZE, INITTREEDEPTH, MUTATEPROB, MAXGEN, TOURNE
                 nextRankDict[rankFitList[i]] = rankFitDict[rankFitList[i]]
                 nextGen.append(rankFitDict[rankFitList[i]])
                 nextRank.append(rankFitList[i])
+                if rankFitList[i] < bestMSE:
+                    bestMSE = rankFitList[i]   
                 pbarTwo.update(1)
             while len(nextGen) < POPSIZE:
                 treeOne = Tree(copyTree=tournament(curGen, TOURNEYSIZE, curFitDict)) 

@@ -34,8 +34,8 @@ class Tree():
             curNode.right = Node(random.choice(ops))
             self.buildTree(curNode.right, curDepth+1, maxDepth, xList)
         else:
-            curNode.left = Node(random.choice([random.randrange(-5, 6), random.choice(xList)]))
-            curNode.right = Node(random.choice([random.randrange(-5, 6), random.choice(xList)]))
+            curNode.left = Node(random.choice([random.randrange(-10000, 10001), random.choice(xList)]))
+            curNode.right = Node(random.choice([random.randrange(-10000, 10001), random.choice(xList)]))
             
     # Recursively creates a copy of the original tree for manipulation
     # parameters:

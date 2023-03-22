@@ -2,12 +2,12 @@ from GeneticAlgorithm import GeneticAlgorithm
 from csvReader import formatData
 
 # These are Constants that the user can change
-DATASET = 'hw2 datasets/dataset2.csv' # dataset as a string
-POPSIZE = 400 # size of each new population
-INITTREEDEPTH = 5 # depth of first tree generation (root is 0)
-MUTATEPROB = 0.05 # probability of a mutation
-MAXGEN = 15 # number of generations until stopping algorithm (if fit enough individual not found)
-TOURNEYSIZE = 20 # number of trees for tournament selection to choose a parent 
+DATASET = 'hw2 datasets/dataset1.csv' # dataset as a string
+POPSIZE = 100 # size of each new population
+INITTREEDEPTH = 4 # depth of first tree generation (root is 0)
+MUTATEPROB = 0.25 # probability of a mutation
+MAXGEN = 20 # number of generations until stopping algorithm (if fit enough individual not found)
+TOURNEYSIZE = 10 # number of trees for tournament selection to choose a parent 
 SURVIVALRATE = 0.4 # percent of population that survives to next generation
 TOTALRUNS = 1 # number of times to run the Genetic Algorithm 
 OUTPUTFILE = f'{DATASET[-5]}GAOutputFile.txt'
